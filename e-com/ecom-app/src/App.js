@@ -22,6 +22,7 @@ import Contact from './component/Contact';
 import Buds from "./component/wireless-buds"
 import Order from "./component/Order"
 import Navbar from "./component/Navbar"
+import Aboutt from './component/About';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -87,6 +88,7 @@ function App() {
               <>
               <Navbar />
               <Contact/>
+              <Footer />
               </>
             } />
              <Route path="/shippingpage" element={
@@ -100,6 +102,13 @@ function App() {
               <>
                 <Navbar />
               <Buds />
+              </>
+            } />
+             <Route path="/aboutt" element={
+              <>
+                <Navbar />
+              <Aboutt />
+              <Footer/>
               </>
             } />
              <Route path="/order" element={

@@ -720,3 +720,177 @@ background: #f5f8fb;
         justify-content: space-between;
     }
 }
+
+
+
+
+
+.about-section {
+  width: 100%;
+  background: #ffffff;
+  padding: 60px 20px;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Header */
+.about-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.about-header h2 {
+  font-size: 2.5rem;
+  border-bottom: 1px solid silver;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  letter-spacing: 2px;
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+
+.about-header p {
+  max-width: 1650px;
+  letter-spacing: 2px;
+  line-height: 30px;
+   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin-top: 15px;
+  color: #555;
+   text-align: justify;
+  font-size: 16px;
+}
+
+/* Content Layout */
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Text Content */
+.about-text h3 {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.about-text p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+/* --------------------------
+   RESPONSIVE DESIGN
+--------------------------- */
+
+/* Tablets */
+@media screen and (min-width: 320px) and (max-width: 380px) {
+
+    .about-header h2{
+        width: 80%;
+        margin-left: 22px;
+    }
+    .about-container .about-header p{
+        font-size: 0.9rem;
+        width: 92%;
+    }
+}
+
+@media screen and (min-width: 381px) and (max-width: 480px) {
+
+    .about-header h2{
+        width: 80%;
+        margin-left: 22px;
+    }
+    .about-container .about-header p{
+        font-size: 0.9rem;
+        width: 95%;
+    }
+}
+@media screen and (min-width: 481px) and (max-width: 600px) {
+
+    .about-header h2{
+        width: 80%;
+        margin-left: 22px;
+    }
+    .about-container .about-header p{
+        font-size: 0.9rem;
+        width: 95%;
+    }
+}
+@media screen and (min-width: 601px) and (max-width: 768px) {
+
+    .about-header h2{
+        width: 80%;
+        margin-left: 22px;
+    }
+    .about-container .about-header p{
+        font-size: 0.9rem;
+        width: 95%;
+    }
+}
+
+
+@media screen and (min-width: 1024px) and (max-width: 1280px) {
+
+    .about-header h2{
+        width: 92%;
+        margin-left: 22px;
+    }
+    .about-container .about-header p{
+        font-size: 0.9rem;
+        width: 95%;
+    }
+}
+
+
+@media screen and (min-width: 1281px) and (max-width: 1366px) {
+
+    .about-header h2{
+        width: 95%;
+        margin-left: 22px;
+    }
+    .about-container .about-header p{
+        font-size: 1.3rem;
+        width: 95%;
+    }
+}
+@media screen and (min-width: 1367px) and (max-width: 1440px) {
+
+    .about-header h2{
+        width: 95%;
+        margin-left: 10px;
+    }
+    .about-container .about-header p{
+        font-size: 1.5rem;
+        width: 95%;
+    }
+}
+@media screen and (min-width: 1441px) and (max-width: 1600px) {
+
+    .about-header h2{
+        width: 100%;
+        margin-left: 10px;
+    }
+    .about-container .about-header p{
+        font-size: 1.5rem;
+        width: 95%;
+    }
+}
+@media screen and (min-width: 1601px) and (max-width: 1920px) {
+
+    .about-header h2{
+        width: 100%;
+        font-size: 3.5rem;
+        margin-left: 10px;
+    }
+    .about-container .about-header p{
+        font-size: 2rem;
+        width:100%;
+}
+}
