@@ -398,7 +398,7 @@ const handleSubmit = (e) => {
 
 
     <Link to="/order" onClick={()=>setMenuOpen(false)} ><p>My Order</p></Link> <br/>
-    <Link><p>About us</p></Link> <br/>
+    <Link to="/aboutt"><p>About us</p></Link> <br/>
     <Link to="/contactpage" onClick={()=>setMenuOpen(false)}><p>Contact us</p></Link>
   </div>
 </div>
