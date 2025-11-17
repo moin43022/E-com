@@ -15,30 +15,19 @@ import botIcon from './chatbott.png'
 import Swal from 'sweetalert2'
 // Add your bot icon image
 
-export default function Main() {
+export default function Main({ cartCount }) {
     const [showSearch, setShowSearch] = useState(false);
         const [isRegister, setIsRegister] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [showPopup, setShowPopup] = useState(false); 
     const [hasShown, setHasShown] = useState(false);
-  const [cartCount, setCartCount] = useState(0);
   const [query, setQuery] = useState("");
   const [filtered, setFiltered] = useState([]);
   const [menuOpen, setMenuOpen] = useState(false);
 const [categoryOpen, setCategoryOpen] = useState(false);
 const [LoggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate();
-  useEffect(() => {
-    const storedNames = JSON.parse(localStorage.getItem("cartItems") || "[]");
-    setCartCount(storedNames.length);
-    const handleStorageChange = () => {
-      const updated = JSON.parse(localStorage.getItem("cartItems") || "[]");
-      setCartCount(updated.length);
-    };
 
-    window.addEventListener("storage", handleStorageChange);
-    return () => window.removeEventListener("storage", handleStorageChange);
-  }, []);
 
       let a = "Earbuds";
       let b = "Headphones";

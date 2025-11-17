@@ -1,9 +1,8 @@
+import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Mid from './component/Mid';
-// import Hp from './component/Hp';
-// import './App.css';
-// import Watch from './component/Watch';
 import Main from './component/Main';
-// import Shipp from './component/Shipping';
 import Wbanner from './component/Wbanner';
 import Sbanner from './component/Sbanner';
 import EBbanner from './component/EBbanner';
@@ -23,104 +22,79 @@ import Buds from "./component/wireless-buds"
 import Order from "./component/Order"
 import Navbar from "./component/Navbar"
 import Aboutt from './component/About';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
 
-  
-  return (
-      <Router>
-        <div>
-          <Routes>
-            <Route path="/" element={
-              <>
-               <Navbar/>
-              <Main/>
-              <Mid/>
-              {/* <Shipp/> */}
-              {/* <Hp/> */}
-              <Hbanner/>
-              <Bigdeal/>
-              {/* <Ebanner/> */}
-              <Bestsell/>
-              <EBbanner/>
-              <Bestp/>
-              {/* <Wbanner/> */}
-              {/* <Sbanner/> */}
-              {/* <Watch/> */}
-              <About/>
-        
-              <Footer/>
-             
-              </>
-            } />
-            <Route path="/about" element={
-              <>
-              <Mid/>
-              </>
-            } />
-            <Route path="/blog" element={
-              <>
-              <Hbanner/>
-              </>
-            } />
-              <Route path="/add-to-cart" element={
-              <>
-               <Navbar/>
-              <Addtocart/>
-              </>
-            } />
+  // ⭐ GLOBAL CART COUNT
+  const [cartCount, setCartCount] = useState(0);
 
-             <Route path="/secondpage" element={
-              <>
-                 <Navbar />
-              <Headphone/>
-              </>
-            } />
-               <Route path="/billingpage" element={
-              <>
-                <Navbar />
-              <Shiping/>
-              </>
-            } />
-            
-             <Route path="/contactpage" element={
-              <>
-              <Navbar />
-              <Contact/>
+  // Load initial count
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("cartItems") || "[]");
+    setCartCount(stored.length);
+  }, []);
+
+  // ⭐ Update when product adds to cart
+  const updateCart = () => {
+    const stored = JSON.parse(localStorage.getItem("cartItems") || "[]");
+    setCartCount(stored.length);
+  };
+
+  return (
+    <Router>
+      <Routes>
+
+        {/* ---------------- HOME PAGE ---------------- */}
+        <Route
+          path="/"
+          element={
+            <>
+              <Navbar cartCount={cartCount} />
+              <Main />
+              <Mid />
+              <Hbanner />
+              <Bigdeal />
+              <Bestsell />
+              <EBbanner />
+              <Bestp />
+              <About />
               <Footer />
-              </>
-            } />
-             <Route path="/shippingpage" element={
-              <>
-                <Navbar />
-              <Shipping/>
-              </>
-            } />
-            
-               <Route path="/buds" element={
-              <>
-                <Navbar />
-              <Buds />
-              </>
-            } />
-             <Route path="/aboutt" element={
-              <>
-                <Navbar />
-              <Aboutt />
-              <Footer/>
-              </>
-            } />
-             <Route path="/order" element={
-              <>
-                <Navbar />
-              < Order/>
-              </>
-            } />
-          </Routes>
-          
-        </div>
-      </Router>
+            </>
+          }
+        />
+
+        {/* ---------------- ADD TO CART PAGE ---------------- */}
+        <Route
+          path="/add-to-cart"
+          element={
+            <>
+              <Navbar cartCount={cartCount} />
+              <Addtocart updateCart={updateCart} />
+            </>
+          }
+        />
+
+        {/* ---------------- PRODUCT PAGE ---------------- */}
+        <Route
+          path="/secondpage"
+          element={
+            <>
+              <Navbar cartCount={cartCount} />
+              <Headphone updateCart={updateCart} />
+            </>
+          }
+        />
+
+        {/* SAME FOR ALL OTHER PAGES */}
+        <Route path="/billingpage" element={<><Navbar cartCount={cartCount} /><Shiping /></>} />
+        <Route path="/contactpage" element={<><Navbar cartCount={cartCount} /><Contact /><Footer /></>} />
+        <Route path="/shippingpage" element={<><Navbar cartCount={cartCount} /><Shipping /></>} />
+        <Route path="/buds" element={<><Navbar cartCount={cartCount} /><Buds updateCart={updateCart} /></>} />
+        <Route path="/aboutt" element={<><Navbar cartCount={cartCount} /><Aboutt /><Footer /></>} />
+        <Route path="/order" element={<><Navbar cartCount={cartCount} /><Order /></>} />
+
+      </Routes>
+    </Router>
   );
 }
 

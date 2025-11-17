@@ -111,7 +111,7 @@ const products = [
 ];
 
 
-const Headphone = () => {
+const Headphone = ({ updateCart }) => {
   const [showSearch, setShowSearch] = useState(false);
  const [cartCount, setCartCount] = useState(0);
    const [showMessage, setShowMessage] = useState(false);
@@ -169,25 +169,30 @@ const Headphone = () => {
 }
 ;
 const addtocart = () => {
-  
+
   const stored = JSON.parse(localStorage.getItem("cartItems") || "[]");
 
-  
   const existingItem = stored.find(item => item.productName === x.productName);
 
   if (existingItem) {
-   
     existingItem.quantity += 1;
   } else {
-   
-    stored.push({ productName: x.productName, price: x.price || 0, quantity: 1 });
+    stored.push({
+      productName: x.productName,
+      price: x.price || 0,
+      quantity: 1
+    });
   }
+
   localStorage.setItem("cartItems", JSON.stringify(stored));
+
   setShowMessage(true);
-  setTimeout(() => setShowMessage(false), 5000);
-  const totalCount = stored.length;
-  setCartCount(totalCount);
+  setTimeout(() => setShowMessage(false), 3000);
+
+  // ⭐ Update Navbar instantly
+  updateCart();
 };
+
 
 function addtocartitem(pn) {
   const stored = JSON.parse(localStorage.getItem("cartItems") || "[]");
@@ -195,17 +200,22 @@ function addtocartitem(pn) {
   const existingItem = stored.find(item => item.productName === pn);
 
   if (existingItem) {
-    
     console.log(`${pn} is already in cart`);
     return;
   }
+
   const updatedCart = [...stored, { productName: pn, qty: 1 }];
+
   localStorage.setItem("cartItems", JSON.stringify(updatedCart));
+
+  // Show message popup
   setShowMessage(true);
   setTimeout(() => setShowMessage(false), 3000);
-  const totalCount = updatedCart.reduce((acc, item) => acc + item.qty, 0);
-  setCartCount(totalCount);
+
+  // VERY IMPORTANT: Update navbar count
+  updateCart();  // <-- This replaces setCartCount()
 }
+
 
 function handlebill() {
  

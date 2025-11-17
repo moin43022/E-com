@@ -12,7 +12,7 @@ import c_r_watch from './w-4.png'
 import c_b_watch from './c-handband.png'
 import c_c_watch from './c-chain.png'
 
-const Cart = () => {
+const Cart = ({ updateCart }) => {
  const [items, setItems] = useState([]);
 const [discount, setDiscount] = useState(0);
  const [cartCount, setCartCount] = useState(0);
@@ -100,16 +100,20 @@ const removeFromCart = (productName) => {
   // Update state
   setItems(updatedItems);
 
-  // Update localStorage with only productName and qty
-  const localData = updatedItems.map(item => ({ productName: item.productName, qty: item.qty }));
+  // Save updated items to localStorage
+  const localData = updatedItems.map(item => ({
+    productName: item.productName,
+    qty: item.qty
+  }));
   localStorage.setItem("cartItems", JSON.stringify(localData));
 
-  setCartCount(updatedItems.length);
+  // Update navbar cart count
+  updateCart();   // <-- REPLACED setCartCount()
 
+  // Show message
   setShowMessage(true);
   setTimeout(() => setShowMessage(false), 5000);
 };
-
 
 
 
