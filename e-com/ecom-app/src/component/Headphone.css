@@ -792,35 +792,43 @@ background: #f5f8fb;
 @media screen and (min-width: 320px) and (max-width: 380px) {
 
     .about-header h2{
+      font-size: 2rem;
         width: 80%;
         margin-left: 22px;
     }
     .about-container .about-header p{
         font-size: 0.9rem;
-        width: 92%;
+        width: 78%;
+        margin-left: 30px;
+        letter-spacing: normal;
     }
 }
 
 @media screen and (min-width: 381px) and (max-width: 480px) {
 
     .about-header h2{
+      font-size: 2rem;
         width: 80%;
         margin-left: 22px;
     }
     .about-container .about-header p{
         font-size: 0.9rem;
-        width: 95%;
+        width: 78%;
+        margin-left: 30px;
+        letter-spacing: normal;
     }
 }
 @media screen and (min-width: 481px) and (max-width: 600px) {
 
     .about-header h2{
+      font-size: 2rem;
         width: 80%;
         margin-left: 22px;
     }
     .about-container .about-header p{
         font-size: 0.9rem;
-        width: 95%;
+        width: 78%;
+        margin-left: 30px;
     }
 }
 @media screen and (min-width: 601px) and (max-width: 768px) {
@@ -831,7 +839,8 @@ background: #f5f8fb;
     }
     .about-container .about-header p{
         font-size: 0.9rem;
-        width: 95%;
+        width: 78%;
+        margin-left: 40px;
     }
 }
 
@@ -844,7 +853,8 @@ background: #f5f8fb;
     }
     .about-container .about-header p{
         font-size: 0.9rem;
-        width: 95%;
+        width: 90%;
+        margin-left: 30px;
     }
 }
 
@@ -857,7 +867,8 @@ background: #f5f8fb;
     }
     .about-container .about-header p{
         font-size: 1.3rem;
-        width: 95%;
+        width: 93%;
+        margin-left: 30px;
     }
 }
 @media screen and (min-width: 1367px) and (max-width: 1440px) {
@@ -868,7 +879,8 @@ background: #f5f8fb;
     }
     .about-container .about-header p{
         font-size: 1.5rem;
-        width: 95%;
+        width: 93%;
+        margin-left: 30px;
     }
 }
 @media screen and (min-width: 1441px) and (max-width: 1600px) {
@@ -879,18 +891,20 @@ background: #f5f8fb;
     }
     .about-container .about-header p{
         font-size: 1.5rem;
-        width: 95%;
+        width: 97%;
+        margin-left: 30px;
     }
 }
 @media screen and (min-width: 1601px) and (max-width: 1920px) {
 
     .about-header h2{
         width: 100%;
-        font-size: 3.5rem;
+        font-size: 2.5rem;
         margin-left: 10px;
     }
     .about-container .about-header p{
-        font-size: 2rem;
+        font-size: 1.5rem;
         width:100%;
+        margin-left: 10px;
 }
 }
