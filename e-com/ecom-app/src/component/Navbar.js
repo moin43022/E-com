@@ -309,7 +309,7 @@ const handleSubmit = (e) => {
 
   {/* Navigation Menu */}
   <div className={`m-nav1 ${menuOpen ? "open" : ""}`}>
-    <Link to="/" onClick={()=>setMenuOpen(false)}> <p>Home</p></Link><br/>
+    <Link to="/"> <p>Home</p></Link><br/>
    
 
     {/* Category Dropdown */}
