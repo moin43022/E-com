@@ -323,16 +323,16 @@ const handleSubmit = (e) => {
 
   {/* Navigation Menu */}
   <motion.div className={`m-nav1 ${menuOpen ? "open" : ""}`}
- initial={{ x: "-100%", opacity: 0 }}
-  animate={{
-    x: menuOpen ? 0 : "-100%",
-    opacity: menuOpen ? 1 : 0
-  }}
+  initial={isMobilee ? { x: "-100%", opacity: 0 } : {}}   // <-- no false
+  animate={
+    isMobilee
+      ? { x: menuOpen ? 0 : "-100%", opacity: menuOpen ? 1 : 0 }
+      : {}
+  }
   transition={{
     type: "spring",
-    stiffness: 60,
-    damping: 12,
-    mass: 0.5
+    stiffness: 70,  // smoother movement
+    damping: 22,    // smoother stop
   }}
   >
     <Link to="/" onClick={()=>setMenuOpen(false)}> <p>Home</p></Link><br/>
