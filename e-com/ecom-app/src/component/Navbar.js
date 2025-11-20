@@ -13,6 +13,7 @@ import c_c_watch from './homet-removebg-preview.png'
 import logo from './logo-1.png'
 import botIcon from './chatbott.png'  
 import Swal from 'sweetalert2'
+import { motion } from "framer-motion";
 // Add your bot icon image
 
 export default function Main({ cartCount }) {
@@ -84,7 +85,7 @@ useEffect(() => {
 const [chatMessages, setChatMessages] = useState([
   { sender: "bot", text: "Hi! Tap a question below to see the answer." },
 ]);
-
+const isMobilee = window.innerWidth < 768;
 const faq = [
   { question: "1. What are your shipping options?", answer: "We offer standard and express shipping across India." },
   { question: "2. What is your return policy?", answer: "You can return products within 15 days of delivery." },
@@ -195,6 +196,8 @@ const handleSubmit = (e) => {
     alert("Please Search The Recmonded Product");
   }
 };
+
+
   return (
     <div className='main-page-container'>
     <div>
@@ -291,16 +294,27 @@ const handleSubmit = (e) => {
    <div className='m-nav'>
  <div className='left-nav'>
   {/* Hamburger icon for mobile */}
-  <div
+  <motion.div
     className='hamburger-toggle'
     onClick={() => setMenuOpen(!menuOpen)}
+   initial={{ opacity: 0, y: -20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.3 }}
+  whileTap={{ scale: 0.8 }}  
   >
     {menuOpen ? (
       <i className='fa-solid fa-xmark'></i>
     ) : (
-      <i className='fa-solid fa-bars'></i>
+      <motion.i
+       key={menuOpen ? "close" : "open"}   // important for animation
+    className={menuOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars"}
+    initial={{ rotate: -90, opacity: 0 }}
+    animate={{ rotate: 0, opacity: 1 }}
+    exit={{ rotate: 90, opacity: 0 }}
+    transition={{ duration: 0.3, ease: "easeOut" }}
+      ></motion.i>
     )}
-  </div>
+  </motion.div>
 
   {/* Logo */}
   <div className='logo-div'>
@@ -308,7 +322,19 @@ const handleSubmit = (e) => {
   </div>
 
   {/* Navigation Menu */}
-  <div className={`m-nav1 ${menuOpen ? "open" : ""}`}>
+  <motion.div className={`m-nav1 ${menuOpen ? "open" : ""}`}
+ initial={{ x: "-100%", opacity: 0 }}
+  animate={{
+    x: menuOpen ? 0 : "-100%",
+    opacity: menuOpen ? 1 : 0
+  }}
+  transition={{
+    type: "spring",
+    stiffness: 60,
+    damping: 12,
+    mass: 0.5
+  }}
+  >
     <Link to="/" onClick={()=>setMenuOpen(false)}> <p>Home</p></Link><br/>
    
 
@@ -322,59 +348,61 @@ const handleSubmit = (e) => {
         Categories
       </p>
 
-      <div className={`dropdown ${categoryOpen ? "open" : "close"}`}>
+      <div className={`dropdown ${categoryOpen ? "open" : "close"}`}
+    
+      >
         <div className='dropdown-grid'>
 
-          <Link to="/buds" onClick={() => {localStorage.setItem("citem","Airbuds");setMenuOpen(false);}}>
+          <Link to="/buds" onClick={() => {localStorage.setItem("citem","Airbuds");setMenuOpen(false);setCategoryOpen(!categoryOpen);}}>
             <div className='dropdown-item'>
               <img src={c_earbuds} alt='Earbuds' />
               <p>True Wireless Earbuds</p>
             </div>
           </Link>
 
-          <Link to="/buds" onClick={() => {localStorage.setItem("citem","Wired Headphones");setMenuOpen(false)}}>
+          <Link to="/buds" onClick={() => {localStorage.setItem("citem","Wired Headphones");setMenuOpen(false);setCategoryOpen(!categoryOpen);}}>
             <div className='dropdown-item'>
               <img src={c_wire_earphone} alt='Wired Earphones' />
               <p>Wired Earphones</p>
             </div>
           </Link>
 
-          <Link to="/buds" onClick={() => {localStorage.setItem("citem","Neckbands");setMenuOpen(false)}}>
+          <Link to="/buds" onClick={() => {localStorage.setItem("citem","Neckbands");setMenuOpen(false);setCategoryOpen(!categoryOpen);}}>
             <div className='dropdown-item'>
               <img src={c_neckband} alt='Neckband' />
               <p>Neckbands</p>
             </div>
           </Link>
 
-          <Link to="/buds" onClick={() =>{ localStorage.setItem("citem","Gaming Headphones");setMenuOpen(false)}}>
+          <Link to="/buds" onClick={() =>{ localStorage.setItem("citem","Gaming Headphones");setMenuOpen(false);setCategoryOpen(!categoryOpen);}}>
             <div className='dropdown-item'>
               <img src={c_headphone} alt='Wireless Headphones' />
               <p>Wireless Headphones</p>
             </div>
           </Link>
 
-          <Link to="/buds" onClick={() =>{ localStorage.setItem("citem","Smartwatches");setMenuOpen(false)}}>
+          <Link to="/buds" onClick={() =>{ localStorage.setItem("citem","Smartwatches");setMenuOpen(false);setCategoryOpen(!categoryOpen);}}>
             <div className='dropdown-item'>
               <img src={c_s_watch} alt='Smartwatch' />
               <p>Square Smartwatch</p>
             </div>
           </Link>
 
-          <Link to="/buds" onClick={() => {localStorage.setItem("citem","Round Smartwatches");setMenuOpen(false)}}>
+          <Link to="/buds" onClick={() => {localStorage.setItem("citem","Round Smartwatches");setMenuOpen(false);setCategoryOpen(!categoryOpen);}}>
             <div className='dropdown-item'>
               <img src={c_r_watch} alt='Round Smartwatch' />
               <p>Round Smartwatch</p>
             </div>
           </Link>
 
-          <Link to="/buds" onClick={() =>{ localStorage.setItem("citem","Speakers");setMenuOpen(false)}}>
+          <Link to="/buds" onClick={() =>{ localStorage.setItem("citem","Speakers");setMenuOpen(false);setCategoryOpen(!categoryOpen);}}>
             <div className='dropdown-item'>
               <img src={c_b_watch} alt='Speaker' />
               <p>Speaker</p>
             </div>
           </Link>
 
-          <Link to="/buds" onClick={() => {localStorage.setItem("citem","Home Theaters");setMenuOpen(false)}}>
+          <Link to="/buds" onClick={() => {localStorage.setItem("citem","Home Theaters");setMenuOpen(false);setCategoryOpen(!categoryOpen);}}>
             <div className='dropdown-item'>
               <img src={c_c_watch} alt='Home Theater' />
               <p>Home Theater</p>
@@ -387,9 +415,9 @@ const handleSubmit = (e) => {
 
 
     <Link to="/order" onClick={()=>setMenuOpen(false)} ><p>My Order</p></Link> <br/>
-    <Link to="/aboutt"><p>About us</p></Link> <br/>
+    <Link to="/aboutt" onClick={()=>setMenuOpen(false)}><p>About us</p></Link> <br/>
     <Link to="/contactpage" onClick={()=>setMenuOpen(false)}><p>Contact us</p></Link>
-  </div>
+  </motion.div>
 </div>
 
 

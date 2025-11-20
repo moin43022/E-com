@@ -21,18 +21,14 @@ export default function Bestseller() {
 
       <div className="seller-video-box">
         {[
-          { src: "Watch-video.mp4", label: "Smartwatches", value: "Round Smartwatches" },
-          { src: "Earbuds-video.mp4", label: "Earbuds", value: "Airbuds" },
-          { src: "Headphone-video.mp4", label: "Headphones", value: "Gaming Headphones" },
-          { src: "Neckband-video.mp4", label: "Neckbands", value: "Neckbands" },
-          { src: "Speaker-video.mp4", label: "Speakers", value: "Speakers" }
+          { src: "Watch-video.mp4", label: "Smartwatches"},
+          { src: "Earbuds-video.mp4", label: "Earbuds" },
+          { src: "Headphone-video.mp4", label: "Headphones" },
+          { src: "Neckband-video.mp4", label: "Neckbands" },
+          { src: "Speaker-video.mp4", label: "Speakers" }
         ].map((item, index) => (
-          <Link to="/buds"
-            key={index}
-            onClick={() => localStorage.setItem("citem", item.value)}
-            style={{ cursor: "pointer" }}
-          >
-            <video
+      <div>
+           <video
               ref={(el) => (videoRefs.current[index] = el)}
               src={item.src}
               muted
@@ -41,7 +37,7 @@ export default function Bestseller() {
               onMouseLeave={() => handleMouseLeave(index)}
             />
             <h4 style={{ textAlign: 'center' }}>{item.label}</h4>
-          </Link>
+        </div>
         ))}
       </div>
     </div>

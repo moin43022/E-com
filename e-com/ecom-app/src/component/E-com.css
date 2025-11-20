@@ -4727,7 +4727,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .deal-first-heading h2:first-child{
   font-family: sans-serif;
-  font-weight: lighter;
+  font-weight: 500;
 }
 .deal-first-heading h2:last-child::after {
   content: "";
