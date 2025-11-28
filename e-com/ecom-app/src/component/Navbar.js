@@ -324,7 +324,9 @@ const handleSearch = () => {
 
   {/* Logo */}
   <div className='logo-div'>
+    <Link to="/">
     <img alt='logo' className='logo-img' src={logo} />
+    </Link>
   </div>
 
   {/* Navigation Menu */}
